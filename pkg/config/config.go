@@ -10,7 +10,7 @@ type Config struct {
 	AdminEmail    string `mapstructure:"ADMIN_EMAIL"`
 	AdminUserName string `mapstructure:"ADMIN_USER_NAME"`
 	AdminPassword string `mapstructure:"ADMIN_PASSWORD"`
-	
+
 	DB_URL        string `mapstructure:"DB_URL"`
 
 	AdminAuthKey string `mapstructure:"ADMIN_AUTH_KEY"`
@@ -31,11 +31,10 @@ type Config struct {
 	GoauthClientSecret string `mapstructure:"GOAUTH_CLIENT_SECRET"`
 	GoauthCallbackUrl  string `mapstructure:"GOAUTH_CALL_BACK_URL"`
 
-	smtpHost        string `mapstructure:"smtpHost"`
-	smtpPort        string `mapstructure:"smtpPort"`
-	email           string `mapstructure:"email"`
-	password        string `mapstructure:"password"`
-	otpLifetime     string `mapstructure:"otpLifetime"`
+	SmtpHost string `mapstructure:"SMTP_HOST"`
+    SmtpPort int    `mapstructure:"SMTP_PORT"`
+    Email    string `mapstructure:"EMAIL"`
+    Password string `mapstructure:"PASSWORD"`
 
 	AwsAccessKeyID string `mapstructure:"AWS_ACCESS_KEY_ID"`
 	AwsSecretKey   string `mapstructure:"AWS_SECRET_ACCESS_KEY"`
@@ -47,7 +46,7 @@ type Config struct {
 var envsNames = []string{
 	"ADMIN_EMAIL", "ADMIN_USER_NAME", "ADMIN_PASSWORD",
 	"DB_URL", // database
-	"smtpHost", "smtpPort", "email", "password", "otpLifetime", // gmail
+	"SmtpHost", "SmtpPort", "Email", "Password", // gmail
 
 	"ADMIN_AUTH_KEY", "USER_AUTH_KEY", // token auth
 	"AUTH_TOKEN", "ACCOUNT_SID", "SERVICE_SID", // twilio

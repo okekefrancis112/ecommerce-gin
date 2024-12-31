@@ -1,23 +1,16 @@
 package otp
 
 import (
+	"github.com/okekefrancis112/ecommerce-gin/pkg/config"
+
 	"crypto/rand"
 	"fmt"
 	"log"
 	"math/big"
 	"sync"
 	"time"
-
-	"github.com/okekefrancis112/ecommerce-gin/pkg/config"
-
 	"gopkg.in/gomail.v2"
 )
-
-// // OtpAuth interface for OTP operations
-// type OtpAuth interface {
-// 	SendOtp(email string) (string, error)
-// 	VerifyOtp(email string, code string) (bool, error)
-// }
 
 type gmailOtp struct {
 	smtpHost    string
@@ -32,12 +25,11 @@ type gmailOtp struct {
 
 // NewOtpAuth initializes the Gmail OTP service
 func NewOtpAuth(cfg config.Config) OtpAuth {
-	// func NewOtpAuth(smtpHost string, smtpPort int, email, password string, otpLifetime time.Duration) OtpAuth {
 	return &gmailOtp{
-		smtpHost:    cfg.smtpHost,
-		smtpPort:    cfg.smtpPort,
-		email:       cfg.email,
-		password:    cfg.password,
+		smtpHost:    cfg.SmtpHost,
+		smtpPort:    cfg.SmtpPort,
+		email:       cfg.Email,
+		password:    cfg.Password,
 		otpStore:    make(map[string]string),
 		expiration:  make(map[string]time.Time),
 		otpLifetime: 5 * time.Minute,
